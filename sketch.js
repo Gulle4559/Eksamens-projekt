@@ -6,7 +6,8 @@ let bil2X = 50;
 let bil2Y = 110;
 let bil3X = 50;
 let bil3Y = 170;
-
+let bil4X = 50;
+let bil4Y = 230;
 
 
 
@@ -34,4 +35,6 @@ image(bil1,playerX,playerY,playerWidth,playerHeight);
 image(bil2,bil2X,bil2Y,playerWidth,playerHeight)
 
 image(bil3,bil3X,bil3Y,playerWidth,playerHeight)
+
+image(bil4,bil4X,bil4Y,playerWidth,playerHeight)
 }
