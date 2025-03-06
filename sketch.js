@@ -3,7 +3,12 @@ let playerWidth = 50;
 let playerX = 50;
 let playerY = 50;
 let bil2X = 50;
-let bil2Y =110;
+let bil2Y = 110;
+let bil3X = 50;
+let bil3Y = 170;
+
+
+
 
 let bane;
 
@@ -28,4 +33,5 @@ image(bil1,playerX,playerY,playerWidth,playerHeight);
 
 image(bil2,bil2X,bil2Y,playerWidth,playerHeight)
 
+image(bil3,bil3X,bil3Y,playerWidth,playerHeight)
 }
