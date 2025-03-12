@@ -1,19 +1,19 @@
-let playerHeight = 50;
-let playerWidth = 50;
+let playerHeight = 90;
+let playerWidth = 90;
 let playerX = 50;
-let playerY = 70;
+let playerY = 140;
 let bil2X = 50;
-let bil2Y = 130;
+let bil2Y = 260;
 let bil3X = 50;
-let bil3Y = 190;
+let bil3Y = 380;
 let bil4X = 50;
-let bil4Y = 250;
+let bil4Y = 500;
 let målstreg;
-let målstregX = 300;
+let målstregX = 700;
 
 let målstregY = 100; 
-let målstregHeight = 50;
-let målstregWidth = 400;
+let målstregHeight = 550;
+let målstregWidth = 100;
 let bane;
 
 function preload(){
@@ -42,7 +42,10 @@ image(bil3,bil3X,bil3Y,playerWidth,playerHeight)
 
 image(bil4,bil4X,bil4Y,playerWidth,playerHeight)
 
+
+
 image(målstreg,målstregX,målstregY,målstregWidth,målstregHeight)
+
 
 
 }
