@@ -8,13 +8,18 @@ let bil3X = 50;
 let bil3Y = 380;
 let bil4X = 50;
 let bil4Y = 500;
+
+
+
 let målstreg;
 let målstregX = 700;
-
 let målstregY = 100; 
 let målstregHeight = 550;
 let målstregWidth = 100;
 let bane;
+
+
+
 
 function preload(){
 bil1= loadImage("Bil1.png");
@@ -24,6 +29,7 @@ bil4= loadImage("Bil4.png");
 
 bane = loadImage("Bane1.jpg");
 målstreg = loadImage("målstreg1.png");
+
 
 }
 
@@ -47,5 +53,14 @@ image(bil4,bil4X,bil4Y,playerWidth,playerHeight)
 image(målstreg,målstregX,målstregY,målstregWidth,målstregHeight)
 
 
+rect(250, 650, 270, 37);
+textSize(30);
+text('Spørgsmål 1', 300, 680);
 
+    
+rect(150, 740, 200, 30);// venstre
+
+rect(380, 740, 200, 30);//højre
 }
+
+
