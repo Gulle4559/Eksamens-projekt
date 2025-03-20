@@ -25,10 +25,10 @@ let målstregHeight = 550;
 let målstregWidth = 100;
 let bane;
 
+let Pokal
 
 
-
-
+let gameWon = false; 
 
 
 function preload(){// loader alle billeder 
@@ -40,6 +40,7 @@ image4 = loadImage("Bil4.png");
 bane = loadImage("Bane1.jpg");
 imageM = loadImage("målstreg1.png");
 
+Pokal = loadImage("Pokal.png")
 
 }
 
@@ -49,21 +50,6 @@ createCanvas(800,800);
 background(250);
 bane.resize(800,800);// bane tilpasset
 image(bane, 0, 0); // bane lagt ind
-
-//image1(bil1,playerX,playerY,playerWidth,playerHeight);// spiller
-
-//image2(bil2,bil2X,bil2Y,playerWidth,playerHeight)// bil2
-
-//image3(bil3,bil3X,bil3Y,playerWidth,playerHeight)// bil3
-
-//image4(bil4,bil4X,bil4Y,playerWidth,playerHeight)// bil4
-
-
-
-//imageM(målstreg,målstregX,målstregY,målstregWidth,målstregHeight)// målestreg
-
-
-
 
 
 
@@ -81,10 +67,22 @@ function mousePressed() {
         playerX -=60;
 }
 
- 
+if (playerX + playerWidth >= målstregX) {
+    gameWon = true; // Sæt spillet til vundet
+}
 
 
 }
+
+//function
+// if (playerX >= 700 && playerX <=800 && playerY >= 100 && playerY <=130 ){
+
+  //text('DU VANDT',400,400)
+  //textSize(100)
+  
+//}  
+
+
 
 
 function draw(){
@@ -100,6 +98,8 @@ function draw(){
 
     rect(380, 740, 200, 30);//højre
 
+    image(imageM,målstregX,målstregY,målstregWidth,målstregHeight)
+
     image(image1,playerX,playerY,playerHeight,playerWidth)
     
     image(image2,bil2X,bil2Y,playerHeight,playerWidth)
@@ -108,7 +108,11 @@ function draw(){
     
     image(image4,bil4X,bil4Y,playerHeight,playerWidth)
     
-    image(imageM,målstregX,målstregY,målstregWidth,målstregHeight)
-    
-
+    if (gameWon) {
+        background(Pokal)
+        fill(0,128,0); // grøn farve
+        textSize(50);
+        text("DU VANDT!", width / 2 - 130, height / 2);
+        
     }
+}
