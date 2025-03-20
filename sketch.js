@@ -28,7 +28,7 @@ let bane;
 let Pokal
 
 
-let gameWon = false; 
+let gameWon = false;// sætter spillet vundet til falsk.
 
 
 function preload(){// loader alle billeder 
@@ -40,7 +40,7 @@ image4 = loadImage("Bil4.png");
 bane = loadImage("Bane1.jpg");
 imageM = loadImage("målstreg1.png");
 
-Pokal = loadImage("Pokal.png")
+Pokal = loadImage("Pokal1.png");
 
 }
 
