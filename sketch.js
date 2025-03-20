@@ -65,32 +65,41 @@ image(bane, 0, 0); // bane lagt ind
 
 
 
-rect(250, 650, 270, 37);
-textSize(30);
-text('Spørgsmål 1', 300, 680);
 
-    
-rect(150, 740, 200, 30);// venstre
-
-rect(380, 740, 200, 30);//højre
 
 }
 
 function mousePressed() {
     // Hvis klik er indenfor højre boks
     if (mouseX >= 380 && mouseX <= 580 && mouseY >= 740 && mouseY <= 770) {
-        playerX +=10 
+        playerX +=60 
 
         
 
+    }
+    if (mouseX >= 150 && mouseX <= 350 && mouseY >= 740 && mouseY <= 770) {
+        playerX -=60;
+}
+
+ 
 
 
 }
 
-}
 
 function draw(){
     
+    background(bane)
+    
+    rect(250, 650, 270, 37);
+    textSize(30);
+    text('Spørgsmål 1', 300, 680);
+
+    
+    rect(150, 740, 200, 30);// venstre
+
+    rect(380, 740, 200, 30);//højre
+
     image(image1,playerX,playerY,playerHeight,playerWidth)
     
     image(image2,bil2X,bil2Y,playerHeight,playerWidth)
