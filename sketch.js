@@ -74,13 +74,7 @@ if (playerX + playerWidth >= målstregX) {
 
 }
 
-//function
-// if (playerX >= 700 && playerX <=800 && playerY >= 100 && playerY <=130 ){
 
-  //text('DU VANDT',400,400)
-  //textSize(100)
-  
-//}  
 
 
 
