@@ -27,6 +27,9 @@ let bane;
 
 let Pokal
 
+let Spørgsmål=["1","2","3","4","5","6","7","8","9"]
+let s = 0
+
 
 let gameWon = false;// sætter spillet vundet til falsk.
 
@@ -58,14 +61,36 @@ image(bane, 0, 0); // bane lagt ind
 function mousePressed() {
     // Hvis klik er indenfor højre boks
     if (mouseX >= 380 && mouseX <= 580 && mouseY >= 740 && mouseY <= 770) {
-        playerX +=60 
-
-        
-
+        playerX +=70 
+        s++
     }
     if (mouseX >= 150 && mouseX <= 350 && mouseY >= 740 && mouseY <= 770) {
-        playerX -=60;
+        playerX -=70;
+        s--
 }
+
+    if (playerX >= 50 && playerX <= 50 ){
+    background(bane)
+    text(Spørgsmål[s], 300,680)
+    textSize(30)
+   
+    
+   
+     if (playerX >= 51 && playerX <= 110 ){
+        background(bane)
+        /text(Spørgsmål[s], 300,680)
+        textSize(30)  
+       
+ 
+
+    }
+}
+
+
+   
+
+
+
 
 if (playerX + playerWidth >= målstregX) {
     gameWon = true; // Sæt spillet til vundet
@@ -76,16 +101,14 @@ if (playerX + playerWidth >= målstregX) {
 
 
 
-
-
-
 function draw(){
     
     background(bane)
-    
     rect(250, 650, 270, 37);
     textSize(30);
-    text('Spørgsmål 1', 300, 680);
+    text(Spørgsmål[s], 300,680);
+
+
 
     
     rect(150, 740, 200, 30);// venstre
@@ -110,3 +133,4 @@ function draw(){
         
     }
 }
+
