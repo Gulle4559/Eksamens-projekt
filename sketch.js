@@ -30,9 +30,18 @@ let Pokal
 let Spørgsmål=["1","2","3","4","5","6","7","8","9"]
 let s = 0
 
+let Svar 
+let s1
+
+let s2
+
+let Bil2t = 0
+let Bil3t = 0
+let Bil4t = 0
 
 let gameWon = false;// sætter spillet vundet til falsk.
 
+let gamelost = false
 
 function preload(){// loader alle billeder 
 image1 = loadImage("Bil1.png");
@@ -60,7 +69,7 @@ image(bane, 0, 0); // bane lagt ind
 
 function mousePressed() {
     // Hvis klik er indenfor højre boks
-    if (mouseX >= 380 && mouseX <= 580 && mouseY >= 740 && mouseY <= 770) {
+    if (mouseX >= 380 && mouseX <= 580 && mouseY >= 740 && mouseY <= 770) {    
         playerX +=70 
         s++
     }
@@ -78,7 +87,7 @@ function mousePressed() {
    
      if (playerX >= 51 && playerX <= 110 ){
         background(bane)
-        /text(Spørgsmål[s], 300,680)
+        text(Spørgsmål[s], 300,680)
         textSize(30)  
        
  
@@ -95,6 +104,7 @@ function mousePressed() {
 if (playerX + playerWidth >= målstregX) {
     gameWon = true; // Sæt spillet til vundet
 }
+
 
 
 }
@@ -132,5 +142,44 @@ function draw(){
         text("DU VANDT!", width / 2 - 130, height / 2);
         
     }
+
+    if (gamelost) {
+        background(Pokal)
+        fill(0,128,0); // grøn farve
+        textSize(50);
+        text("Du Tabte!", width / 2 - 130, height / 2);
+        
+    }
+   Bil2t+=1 
+   if(Bil2t==150){
+    Bil2t=0
+    bil2X += 70
+
+   }
+   Bil3t+=1 
+   if(Bil3t==180){
+    Bil3t=0
+    bil3X += 70
+
+   }
+   Bil4t+=1 
+   if(Bil4t==200){
+    Bil4t=0
+    bil4X += 70
+
+   }
+   
+   if (bil2X + playerWidth >= målstregX) {
+    gamelost = true; // Sæt spillet til vundet
+}
+
+if (bil3X + playerWidth >= målstregX) {
+    gamelost = true; // Sæt spillet til vundet
+}
+
+if (bil4X + playerWidth >= målstregX) {
+    gamelost = true; // Sæt spillet til vundet
+}
+   console.log(gamelost)
 }
 
