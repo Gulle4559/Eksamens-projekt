@@ -21,29 +21,34 @@ let imageM
 let målstreg;
 let målstregX = 700;
 let målstregY = 100; 
-let målstregHeight = 550;
+let målstregHeight = 550;   
 let målstregWidth = 100;
 let bane;
 
 let Pokal
+let Tabte
 
-let Spørgsmål=["1","2","3","4","5","6","7","8","9"]
+let Spørgsmål=["Hvad er 2+2?","Hvordan finder man c^2 i en trekant?","hvordan ser funktionen for en linær graf ud?","4","5","6","7","8","9"]
 let s = 0
 
-let Svar 
-let s1
+let Svar1 =["3","a*b","ax+b","4","5","6","7","8","9"] 
+let s1 = 0
 
-let s2
+
+let Svar2 = ["4","a^2*b^2","ax*b","4","5","6","7","8","9"]
+let s2 = 0
 
 let Bil2t = 0
 let Bil3t = 0
 let Bil4t = 0
 
-let gameWon = false;// sætter spillet vundet til falsk.
+let gameWon = false;
 
 let gamelost = false
 
-function preload(){// loader alle billeder 
+
+
+function preload(){
 image1 = loadImage("Bil1.png");
 image2 = loadImage("Bil2.png");
 image3 = loadImage("Bil3.png");
@@ -53,6 +58,7 @@ bane = loadImage("Bane1.jpg");
 imageM = loadImage("målstreg1.png");
 
 Pokal = loadImage("Pokal1.png");
+Tabte = loadImage("You lose.png");
 
 }
 
@@ -61,7 +67,7 @@ function setup(){
 createCanvas(800,800);
 background(250);
 bane.resize(800,800);// bane tilpasset
-image(bane, 0, 0); // bane lagt ind
+image(bane, 0, 0); 
 
 
 
@@ -72,34 +78,16 @@ function mousePressed() {
     if (mouseX >= 380 && mouseX <= 580 && mouseY >= 740 && mouseY <= 770) {    
         playerX +=70 
         s++
+        s1++
+        s2++
     }
+    // Hvis klik er indenfor venstre boks
     if (mouseX >= 150 && mouseX <= 350 && mouseY >= 740 && mouseY <= 770) {
         playerX -=70;
         s--
+        s1--
+        s2--
 }
-
-    if (playerX >= 50 && playerX <= 50 ){
-    background(bane)
-    text(Spørgsmål[s], 300,680)
-    textSize(30)
-   
-    
-   
-     if (playerX >= 51 && playerX <= 110 ){
-        background(bane)
-        text(Spørgsmål[s], 300,680)
-        textSize(30)  
-       
- 
-
-    }
-}
-
-
-   
-
-
-
 
 if (playerX + playerWidth >= målstregX) {
     gameWon = true; // Sæt spillet til vundet
@@ -117,13 +105,15 @@ function draw(){
     rect(250, 650, 270, 37);
     textSize(30);
     text(Spørgsmål[s], 300,680);
-
-
-
     
     rect(150, 740, 200, 30);// venstre
+    text(Svar1[s1],200,768);
+    textSize(30);
+    textAlign(400,400)
 
     rect(380, 740, 200, 30);//højre
+    text(Svar2[s2],430,768);
+    textSize(30);
 
     image(imageM,målstregX,målstregY,målstregWidth,målstregHeight)
 
@@ -144,42 +134,50 @@ function draw(){
     }
 
     if (gamelost) {
-        background(Pokal)
-        fill(0,128,0); // grøn farve
+        background(Tabte)
+        fill(255,0,0); // grøn farve
         textSize(50);
         text("Du Tabte!", width / 2 - 130, height / 2);
         
     }
+
+   //if(s=1){
+    
+    //textSize(10);
+   // textAlign(, 400)
+
+  // }
+
    Bil2t+=1 
-   if(Bil2t==150){
+   if(Bil2t==650){
     Bil2t=0
-    bil2X += 70
+    bil2X += 50
 
    }
    Bil3t+=1 
-   if(Bil3t==180){
+   if(Bil3t==580){
     Bil3t=0
-    bil3X += 70
+    bil3X += 50
 
    }
    Bil4t+=1 
-   if(Bil4t==200){
+   if(Bil4t==500){
     Bil4t=0
-    bil4X += 70
+    bil4X += 50
 
    }
    
    if (bil2X + playerWidth >= målstregX) {
-    gamelost = true; // Sæt spillet til vundet
+    gamelost = true; 
 }
 
 if (bil3X + playerWidth >= målstregX) {
-    gamelost = true; // Sæt spillet til vundet
+    gamelost = true; 
 }
 
 if (bil4X + playerWidth >= målstregX) {
-    gamelost = true; // Sæt spillet til vundet
+    gamelost = true; 
 }
-   console.log(gamelost)
+   
 }
 
