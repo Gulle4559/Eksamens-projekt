@@ -28,7 +28,7 @@ let bane;
 let Pokal
 let Tabte
 
-let Spørgsmål=["Hvad er 2+2?","Hvordan finder man c^2 i en trekant?","hvordan ser funktionen for en linær graf ud?","4","5","6","7","8","9"]
+let Spørgsmål=["Hvad er 2+2?","Hvordan finder man c^2 i en trekant?","hvordan ser funktionen for en linær graf ud?","Hvad er ","5","6","7","8","9"]
 let s = 0
 
 let Svar1 =["3","a*b","ax+b","4","5","6","7","8","9"] 
@@ -46,7 +46,11 @@ let gameWon = false;
 
 let gamelost = false
 
+let good; 
 
+let bad
+
+let start
 
 function preload(){
 image1 = loadImage("Bil1.png");
@@ -60,6 +64,9 @@ imageM = loadImage("målstreg1.png");
 Pokal = loadImage("Pokal1.png");
 Tabte = loadImage("You lose.png");
 
+good = loadSound('good-job-driver.mp3')
+bad = loadSound('wah-wah-wah-wah-sad-sound.mp3')
+start = loadSound('mariostart.mp3')
 }
 
 
@@ -68,6 +75,7 @@ createCanvas(800,800);
 background(250);
 bane.resize(800,800);// bane tilpasset
 image(bane, 0, 0); 
+
 
 
 
@@ -80,6 +88,7 @@ function mousePressed() {
         s++
         s1++
         s2++
+        good.play();
     }
     // Hvis klik er indenfor venstre boks
     if (mouseX >= 150 && mouseX <= 350 && mouseY >= 740 && mouseY <= 770) {
@@ -87,15 +96,18 @@ function mousePressed() {
         s--
         s1--
         s2--
+        bad.play();
 }
 
 if (playerX + playerWidth >= målstregX) {
     gameWon = true; // Sæt spillet til vundet
 }
 
-
-
 }
+
+
+
+
 
 
 
@@ -127,7 +139,7 @@ function draw(){
     
     if (gameWon) {
         background(Pokal)
-        fill(0,128,0); // grøn farve
+        fill(0,128,0); 
         textSize(50);
         text("DU VANDT!", width / 2 - 130, height / 2);
         
@@ -141,12 +153,7 @@ function draw(){
         
     }
 
-   //if(s=1){
-    
-    //textSize(10);
-   // textAlign(, 400)
-
-  // }
+   
 
    Bil2t+=1 
    if(Bil2t==650){
@@ -180,4 +187,3 @@ if (bil4X + playerWidth >= målstregX) {
 }
    
 }
-
