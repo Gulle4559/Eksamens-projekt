@@ -27,15 +27,19 @@ let bane;
 
 let Pokal
 let Tabte
+let hvilken = ""
 
-let Spørgsmål=["Hvad er 2+2?","Hvordan finder man c^2 i en trekant?","hvordan ser funktionen for en linær graf ud?","Hvad er ","5","6","7","8","9"]
+let score = 0;
+
+
+let Spørgsmål=["Hvad er 2+2?","Hvordan finder man c^2 i en trekant?","hvordan ser funktionen for en linær graf ud?","Hvad er 5*6 ","5","6","7","8","9"]
 let s = 0
 
-let Svar1 =["3","a*b","ax+b","4","5","6","7","8","9"] 
+let Svar1 =["3","a*b","ax*b","25","5","6","7","8","9"] 
 let s1 = 0
 
 
-let Svar2 = ["4","a^2*b^2","ax*b","4","5","6","7","8","9"]
+let Svar2 = ["4","a^2*b^2","ax+b","30","5","6","7","8","9"]
 let s2 = 0
 
 let Bil2t = 0
@@ -48,9 +52,9 @@ let gamelost = false
 
 let good; 
 
-let bad
+let bad;
 
-let start
+let start;
 
 function preload(){
 image1 = loadImage("Bil1.png");
@@ -76,27 +80,49 @@ background(250);
 bane.resize(800,800);// bane tilpasset
 image(bane, 0, 0); 
 
-
-
-
 }
 
 function mousePressed() {
     // Hvis klik er indenfor højre boks
     if (mouseX >= 380 && mouseX <= 580 && mouseY >= 740 && mouseY <= 770) {    
-        playerX +=70 
-        s++
-        s1++
-        s2++
-        good.play();
+        if(hvilken == "højre"){
+            playerX +=70 
+            s++
+            s1++
+            s2++
+            score++
+            good.play();
+        } else {
+            playerX -=70;
+            s--
+            s1--
+            s2--
+            score--
+            bad.play();
+        }
+        hvilken = ""
+
+
+        
     }
     // Hvis klik er indenfor venstre boks
     if (mouseX >= 150 && mouseX <= 350 && mouseY >= 740 && mouseY <= 770) {
-        playerX -=70;
-        s--
-        s1--
-        s2--
-        bad.play();
+        if(hvilken == "venstre"){
+            playerX +=70 
+            s++
+            s1++
+            s2++
+            score++
+            good.play();
+        } else {
+            playerX -=70;
+            s--
+            s1--
+            s2--
+            score--
+            bad.play();
+        }
+        hvilken = ""
 }
 
 if (playerX + playerWidth >= målstregX) {
@@ -105,27 +131,43 @@ if (playerX + playerWidth >= målstregX) {
 
 }
 
-
-
-
-
-
-
 function draw(){
     
     background(bane)
     rect(250, 650, 270, 37);
     textSize(30);
     text(Spørgsmål[s], 300,680);
+    if(hvilken == ""){
+        
+        let temp = random(1,3)
+        temp = Math.floor(temp)
+        if (temp == 1){
+            hvilken = "venstre"
+        } else {
+            hvilken = "højre"
+        }
+        console.log(temp)
+    }
+    if(hvilken == "venstre"){
+        rect(150, 740, 200, 30);// venstre
+        text(Svar2[s2],200,768);
+        textSize(30);
+        textAlign(400,400)
     
-    rect(150, 740, 200, 30);// venstre
-    text(Svar1[s1],200,768);
-    textSize(30);
-    textAlign(400,400)
-
-    rect(380, 740, 200, 30);//højre
-    text(Svar2[s2],430,768);
-    textSize(30);
+        rect(380, 740, 200, 30);//højre
+        text(Svar1[s1],430,768);
+        textSize(30);
+    }
+    if(hvilken == "højre"){
+        rect(150, 740, 200, 30);// venstre
+        text(Svar1[s1],200,768);
+        textSize(30);
+        textAlign(400,400)
+    
+        rect(380, 740, 200, 30);//højre
+        text(Svar2[s2],430,768);
+        textSize(30);
+    }
 
     image(imageM,målstregX,målstregY,målstregWidth,målstregHeight)
 
@@ -141,15 +183,15 @@ function draw(){
         background(Pokal)
         fill(0,128,0); 
         textSize(50);
-        text("DU VANDT!", width / 2 - 130, height / 2);
+        text("DU VANDT!",270,490);
         
     }
 
     if (gamelost) {
         background(Tabte)
-        fill(255,0,0); // grøn farve
+        fill(0,0,0); 
         textSize(50);
-        text("Du Tabte!", width / 2 - 130, height / 2);
+        text("Du Tabte!", 270,490);
         
     }
 
@@ -187,3 +229,15 @@ if (bil4X + playerWidth >= målstregX) {
 }
    
 }
+
+function displayscore(){
+//fill(255,0,0)
+//text("score" + score,100,100)
+//textSize(30)
+
+
+} 
+
+displayscore();
+
+console.log(score)
