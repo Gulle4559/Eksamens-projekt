@@ -27,7 +27,7 @@ let bane;
 
 let Pokal
 let Tabte
-let hvilken = ""
+let Svar = ""
 
 let score = 0;
 
@@ -70,7 +70,7 @@ Tabte = loadImage("You lose.png");
 
 good = loadSound('good-job-driver.mp3')
 bad = loadSound('wah-wah-wah-wah-sad-sound.mp3')
-start = loadSound('mariostart.mp3')
+
 }
 
 
@@ -85,7 +85,7 @@ image(bane, 0, 0);
 function mousePressed() {
     // Hvis klik er indenfor højre boks
     if (mouseX >= 380 && mouseX <= 580 && mouseY >= 740 && mouseY <= 770) {    
-        if(hvilken == "højre"){
+        if(Svar == "højre"){
             playerX +=70 
             s++
             s1++
@@ -100,14 +100,14 @@ function mousePressed() {
             score--
             bad.play();
         }
-        hvilken = ""
+        Svar = ""
 
 
         
     }
     // Hvis klik er indenfor venstre boks
     if (mouseX >= 150 && mouseX <= 350 && mouseY >= 740 && mouseY <= 770) {
-        if(hvilken == "venstre"){
+        if(Svar == "venstre"){
             playerX +=70 
             s++
             s1++
@@ -122,7 +122,7 @@ function mousePressed() {
             score--
             bad.play();
         }
-        hvilken = ""
+        Svar = ""
 }
 
 if (playerX + playerWidth >= målstregX) {
@@ -137,18 +137,18 @@ function draw(){
     rect(250, 650, 270, 37);
     textSize(30);
     text(Spørgsmål[s], 300,680);
-    if(hvilken == ""){
+    if(Svar == ""){
         
         let temp = random(1,3)
         temp = Math.floor(temp)
         if (temp == 1){
-            hvilken = "venstre"
+            Svar = "venstre"
         } else {
-            hvilken = "højre"
+            Svar = "højre"
         }
         console.log(temp)
     }
-    if(hvilken == "venstre"){
+    if(Svar == "venstre"){
         rect(150, 740, 200, 30);// venstre
         text(Svar2[s2],200,768);
         textSize(30);
@@ -158,7 +158,7 @@ function draw(){
         text(Svar1[s1],430,768);
         textSize(30);
     }
-    if(hvilken == "højre"){
+    if(Svar == "højre"){
         rect(150, 740, 200, 30);// venstre
         text(Svar1[s1],200,768);
         textSize(30);
@@ -230,14 +230,3 @@ if (bil4X + playerWidth >= målstregX) {
    
 }
 
-function displayscore(){
-//fill(255,0,0)
-//text("score" + score,100,100)
-//textSize(30)
-
-
-} 
-
-displayscore();
-
-console.log(score)
