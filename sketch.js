@@ -54,7 +54,7 @@ let good;
 
 let bad;
 
-let start;
+let start=0;
 
 function preload(){
 image1 = loadImage("Bil1.png");
@@ -93,12 +93,17 @@ function mousePressed() {
             score++
             good.play();
         } else {
-            playerX -=70;
-            s--
-            s1--
-            s2--
-            score--
             bad.play();
+            if(s!=0){
+                playerX -=70;
+                s--
+                s1--
+                s2--
+                score--
+
+               
+
+            }
         }
         Svar = ""
 
@@ -115,12 +120,18 @@ function mousePressed() {
             score++
             good.play();
         } else {
-            playerX -=70;
-            s--
-            s1--
-            s2--
-            score--
+            
             bad.play();
+            if(s!=0){
+                playerX -=70;
+                s--
+                s1--
+                s2--
+                score--
+
+               
+
+            }
         }
         Svar = ""
 }
@@ -132,101 +143,121 @@ if (playerX + playerWidth >= målstregX) {
 }
 
 function draw(){
-    
-    background(bane)
-    rect(250, 650, 270, 37);
-    textSize(30);
-    text(Spørgsmål[s], 300,680);
-    if(Svar == ""){
-        
-        let temp = random(1,3)
-        temp = Math.floor(temp)
-        if (temp == 1){
-            Svar = "venstre"
-        } else {
-            Svar = "højre"
+    if(start==1){
+        background(bane)
+        rect(0, 670, 800, 37);
+        textSize(30);
+       
+        text(Spørgsmål[s], 0,700);
+        if(Svar == ""){
+            
+            let temp = random(1,3)
+            temp = Math.floor(temp)
+            if (temp == 1){
+                Svar = "venstre"
+            } else {
+                Svar = "højre"
+            }
+            console.log(temp)
         }
-        console.log(temp)
-    }
-    if(Svar == "venstre"){
-        rect(150, 740, 200, 30);// venstre
-        text(Svar2[s2],200,768);
-        textSize(30);
-        textAlign(400,400)
-    
-        rect(380, 740, 200, 30);//højre
-        text(Svar1[s1],430,768);
-        textSize(30);
-    }
-    if(Svar == "højre"){
-        rect(150, 740, 200, 30);// venstre
-        text(Svar1[s1],200,768);
-        textSize(30);
-        textAlign(400,400)
-    
-        rect(380, 740, 200, 30);//højre
-        text(Svar2[s2],430,768);
-        textSize(30);
-    }
-
-    image(imageM,målstregX,målstregY,målstregWidth,målstregHeight)
-
-    image(image1,playerX,playerY,playerHeight,playerWidth)
-    
-    image(image2,bil2X,bil2Y,playerHeight,playerWidth)
-    
-    image(image3,bil3X,bil3Y,playerHeight,playerWidth)
-    
-    image(image4,bil4X,bil4Y,playerHeight,playerWidth)
-    
-    if (gameWon) {
-        background(Pokal)
-        fill(0,128,0); 
-        textSize(50);
-        text("DU VANDT!",270,490);
+        if(Svar == "venstre"){
+            rect(150, 740, 200, 30);// venstre
+            text(Svar2[s2],200,768);
+            textSize(30);
+            
         
-    }
-
-    if (gamelost) {
-        background(Tabte)
-        fill(0,0,0); 
-        textSize(50);
-        text("Du Tabte!", 270,490);
+            rect(380, 740, 200, 30);//højre
+            text(Svar1[s1],430,768);
+            textSize(30);
+        }
+        if(Svar == "højre"){
+            rect(150, 740, 200, 30);// venstre
+            text(Svar1[s1],200,768);
+            textSize(30);
+            
         
+            rect(380, 740, 200, 30);//højre
+            text(Svar2[s2],430,768);
+            textSize(30);
+        }
+    
+        image(imageM,målstregX,målstregY,målstregWidth,målstregHeight)
+    
+        image(image1,playerX,playerY,playerHeight,playerWidth)
+        
+        image(image2,bil2X,bil2Y,playerHeight,playerWidth)
+        
+        image(image3,bil3X,bil3Y,playerHeight,playerWidth)
+        
+        image(image4,bil4X,bil4Y,playerHeight,playerWidth)
+        
+        if (gameWon) {
+            background(Pokal)
+            fill(0,128,0); 
+            textSize(50);
+            text("DU VANDT!",270,490);
+            
+        }
+    
+        if (gamelost) {
+            background(Tabte)
+            fill(0,0,0); 
+            textSize(50);
+            text("Du Tabte!", 270,490);
+            
+        }
+    
+        
+    
+       
+    
+       Bil2t+=1 
+       if(Bil2t==650){
+        Bil2t=0
+        bil2X += 50
+    
+       }
+       Bil3t+=1 
+       if(Bil3t==580){
+        Bil3t=0
+        bil3X += 50
+    
+       }
+       Bil4t+=1 
+       if(Bil4t==500){
+        Bil4t=0
+        bil4X += 50
+    
+       }
+       
+       if (bil2X + playerWidth >= målstregX) {
+        gamelost = true; 
     }
+    
+    if (bil3X + playerWidth >= målstregX) {
+        gamelost = true; 
+    }
+    
+    if (bil4X + playerWidth >= målstregX) {
+        gamelost = true; 
+    }
+       
 
-   
+    } else{
+    //Start menu
+    rect(250, 650, 270, 37)
+    text("Start Spil",320,680)
+    textSize(30)
+     if(mouseIsPressed){
+        if(mouseX >= 250 && mouseX <= 520 && mouseY >= 650 && mouseY <= 687){
+           start=1 
+           console.log(start)
+        }
 
-   Bil2t+=1 
-   if(Bil2t==650){
-    Bil2t=0
-    bil2X += 50
 
-   }
-   Bil3t+=1 
-   if(Bil3t==580){
-    Bil3t=0
-    bil3X += 50
-
-   }
-   Bil4t+=1 
-   if(Bil4t==500){
-    Bil4t=0
-    bil4X += 50
-
-   }
-   
-   if (bil2X + playerWidth >= målstregX) {
-    gamelost = true; 
+     }
+    }
+    
 }
 
-if (bil3X + playerWidth >= målstregX) {
-    gamelost = true; 
-}
-
-if (bil4X + playerWidth >= målstregX) {
-    gamelost = true; 
-}
-   
-}
 
