@@ -69,8 +69,8 @@ imageM = loadImage("målstreg1.png");
 Pokal = loadImage("Pokal1.png");
 Tabte = loadImage("You lose.png");
 
-good = loadSound('good-job-driver.mp3');
-bad = loadSound('wah-wah-wah-wah-sad-sound.mp3');
+good = loadSound('buzzer-rightanswer.mp3');
+bad = loadSound('wrong-answer-sound-fx.mp3');
 
 imageS = loadImage("Matematisk_Racer.PNG")
 
