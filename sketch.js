@@ -12,11 +12,12 @@ let bil3Y = 380;
 let bil4X = 50;
 let bil4Y = 500;
 
-let image1
-let image2
-let image3
-let image4
-let imageM
+let image1;
+let image2;
+let image3;
+let image4;
+let imageM;
+let imageS;
 
 let målstreg;
 let målstregX = 700;
@@ -33,22 +34,22 @@ let score = 0;
 
 
 let Spørgsmål=["Hvad er 2+2?","Hvordan finder man c^2 i en trekant?","hvordan ser funktionen for en linær graf ud?","Hvad er 5*6 ","5","6","7","8","9"]
-let s = 0
+let s = 0;
 
 let Svar1 =["3","a*b","ax*b","25","5","6","7","8","9"] 
-let s1 = 0
+let s1 = 0;
 
 
 let Svar2 = ["4","a^2*b^2","ax+b","30","5","6","7","8","9"]
-let s2 = 0
+let s2 = 0;
 
-let Bil2t = 0
-let Bil3t = 0
-let Bil4t = 0
+let Bil2t = 0;
+let Bil3t = 0;
+let Bil4t = 0;
 
 let gameWon = false;
 
-let gamelost = false
+let gamelost = false;
 
 let good; 
 
@@ -68,8 +69,10 @@ imageM = loadImage("målstreg1.png");
 Pokal = loadImage("Pokal1.png");
 Tabte = loadImage("You lose.png");
 
-good = loadSound('good-job-driver.mp3')
-bad = loadSound('wah-wah-wah-wah-sad-sound.mp3')
+good = loadSound('good-job-driver.mp3');
+bad = loadSound('wah-wah-wah-wah-sad-sound.mp3');
+
+imageS = loadImage("Matematisk_Racer.PNG")
 
 }
 
@@ -245,13 +248,14 @@ function draw(){
 
     } else{
     //Start menu
-    rect(250, 650, 270, 37)
-    text("Start Spil",320,680)
-    textSize(30)
+    image(imageS,225,400,300,100);
+    rect(250, 650, 270, 37);
+    text("Start Spil",320,680);
+    textSize(30);
      if(mouseIsPressed){
         if(mouseX >= 250 && mouseX <= 520 && mouseY >= 650 && mouseY <= 687){
            start=1 
-           console.log(start)
+           
         }
 
 
