@@ -33,14 +33,14 @@ let Svar = ""
 let score = 0;
 
 
-let Spørgsmål=["Hvad er 2+2?","Hvordan finder man c^2 i en trekant?","hvordan ser funktionen for en linær graf ud?","Hvad er 5*6 ","5","6","7","8","9"]
+let Spørgsmål=["Hvad er 2+2?","Hvordan finder man c^2 i en trekant?","hvordan ser funktionen for en linær graf ud?","Hvad er 5*6 ","Løs ligningen 3(2x-4)+5=2x+11 ","6","7","8","9"]
 let s = 0;
 
-let Svar1 =["3","a*b","ax*b","25","5","6","7","8","9"] 
+let Svar1 =["3","a*b","ax*b","25","9/3","6","7","8","9"] 
 let s1 = 0;
 
 
-let Svar2 = ["4","a^2*b^2","ax+b","30","5","6","7","8","9"]
+let Svar2 = ["4","a^2+b^2","ax+b","30","9/2","6","7","8","9"]
 let s2 = 0;
 
 let Bil2t = 0;
@@ -54,6 +54,9 @@ let gamelost = false;
 let good; 
 
 let bad;
+
+let StartM;
+let SlutM = false;
 
 let start=0;
 
@@ -69,10 +72,13 @@ imageM = loadImage("målstreg1.png");
 Pokal = loadImage("Pokal1.png");
 Tabte = loadImage("You lose.png");
 
+imageS = loadImage("Matematisk_Racer.PNG")
+
 good = loadSound('buzzer-rightanswer.mp3');
 bad = loadSound('wrong-answer-sound-fx.mp3');
+StartM = loadSound('title-theme-mario-kart-wii-cortado.mp3')
 
-imageS = loadImage("Matematisk_Racer.PNG")
+
 
 }
 
@@ -83,7 +89,25 @@ background(250);
 bane.resize(800,800);// bane tilpasset
 image(bane, 0, 0); 
 
+ 
+   
 }
+function mouseMoved(){
+    if(!SlutM){
+     StartM.play()
+    SlutM=true
+ 
+    }
+     
+    
+ }
+
+ 
+ 
+ 
+
+
+
 
 function mousePressed() {
     // Hvis klik er indenfor højre boks
@@ -143,6 +167,11 @@ if (playerX + playerWidth >= målstregX) {
     gameWon = true; // Sæt spillet til vundet
 }
 
+if(mouseX >= 10 && mouseX <= 167 && mouseY >= 50 && mouseY <= 250){
+
+    StartM.play()
+
+}
 }
 
 function draw(){
@@ -161,7 +190,7 @@ function draw(){
             } else {
                 Svar = "højre"
             }
-            console.log(temp)
+            
         }
         if(Svar == "venstre"){
             rect(150, 740, 200, 30);// venstre
@@ -249,9 +278,14 @@ function draw(){
     } else{
     //Start menu
     image(imageS,225,400,300,100);
+    image(image1,330,250,playerHeight,playerWidth)
     rect(250, 650, 270, 37);
     text("Start Spil",320,680);
     textSize(30);
+    rect(10,90,160,80)
+    text("Intro lyd",30,140)
+    
+    
      if(mouseIsPressed){
         if(mouseX >= 250 && mouseX <= 520 && mouseY >= 650 && mouseY <= 687){
            start=1 
