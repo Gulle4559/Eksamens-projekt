@@ -92,15 +92,7 @@ image(bane, 0, 0);
  
    
 }
-function mouseMoved(){
-    if(!SlutM){
-     StartM.play()
-    SlutM=true
- 
-    }
-     
-    
- }
+
 
  
  
@@ -167,11 +159,17 @@ if (playerX + playerWidth >= målstregX) {
     gameWon = true; // Sæt spillet til vundet
 }
 
-if(mouseX >= 10 && mouseX <= 167 && mouseY >= 50 && mouseY <= 250){
+if(mouseX >= 10 && mouseX <= 167 && mouseY >= 50 && mouseY <= 250 ){
+    if(start == 0){
+        StartM.play()
+    }
+   
 
-    StartM.play()
-
+    
 }
+
+
+
 }
 
 function draw(){
@@ -179,7 +177,11 @@ function draw(){
         background(bane)
         rect(0, 670, 800, 37);
         textSize(30);
-       
+     
+    rect(50,50,50,50)    
+    text(s,67,86)
+    textSize(30)
+
         text(Spørgsmål[s], 0,700);
         if(Svar == ""){
             
@@ -275,20 +277,20 @@ function draw(){
     }
        
 
-    } else{
+    } else{//køre ned stånde hvis s=0
     //Start menu
-    image(imageS,225,400,300,100);
-    image(image1,330,250,playerHeight,playerWidth)
-    rect(250, 650, 270, 37);
-    text("Start Spil",320,680);
-    textSize(30);
-    rect(10,90,160,80)
-    text("Intro lyd",30,140)
+    image(imageS,225,400,300,100);//viser billedet som siger "Matematisk Racer"
+    image(image1,330,250,playerHeight,playerWidth)// Viser billedet af den røde bil spilleren bruger 
+    rect(250, 650, 270, 37);//en kasse til start spillet
+    text("Start Spil",320,680);//Viser teksten "Start Spil" inde i kasse fra linje 283
+    textSize(30);//text størlsen
+    rect(10,90,160,80)// en kasse som bliver brugt til intro lyd
+    text("Intro lyd",30,140)// Viser teksten
+  
     
-    
-     if(mouseIsPressed){
-        if(mouseX >= 250 && mouseX <= 520 && mouseY >= 650 && mouseY <= 687){
-           start=1 
+     if(mouseIsPressed){// hvis man venstre klikker på mussen
+        if(mouseX >= 250 && mouseX <= 520 && mouseY >= 650 && mouseY <= 687){// aktivers ved at klikke inde for parameterne af firkanten som siger "Start Spil" 
+           start=1//sætter start til 1 som så starter spillet 
            
         }
 
