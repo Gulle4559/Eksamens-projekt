@@ -33,14 +33,16 @@ let Svar = ""
 let score = 0;
 
 
-let Spørgsmål=["Hvad er 2+2?","Hvordan finder man c^2 i en trekant?","hvordan ser funktionen for en linær graf ud?","Hvad er 5*6 ","Løs ligningen 3(2x-4)+5=2x+11 ","6","7","8","9"]
+let Spørgsmål=["Hvad er 2+2?","Hvordan finder man c^2 i en trekant?",
+    "hvordan ser funktionen for en linær graf ud?","Hvad er 5*6 ","Løs ligningen 3(2x-4)+5=2x+11 ","Hvordan Finder man arealet af en cirkel?",
+    "Hvor i y-aksen starter denne graf? 10x+4","Hvilken figure regner determinanten? ","9"]
 let s = 0;
 
-let Svar1 =["3","a*b","ax*b","25","9/3","6","7","8","9"] 
+let Svar1 =["3","a*b","ax*b","25","9/3","pi*d","10","hexagon","9"] 
 let s1 = 0;
 
 
-let Svar2 = ["4","a^2+b^2","ax+b","30","9/2","6","7","8","9"]
+let Svar2 = ["4","a^2+b^2","ax+b","30","9/2","pi*r^2","4","parallelogram","9"]
 let s2 = 0;
 
 let Bil2t = 0;
@@ -196,22 +198,22 @@ function draw(){
         }
         if(Svar == "venstre"){
             rect(150, 740, 200, 30);// venstre
-            text(Svar2[s2],200,768);
+            text(Svar2[s2],160,768);
             textSize(30);
             
         
             rect(380, 740, 200, 30);//højre
-            text(Svar1[s1],430,768);
+            text(Svar1[s1],390,768);
             textSize(30);
         }
         if(Svar == "højre"){
             rect(150, 740, 200, 30);// venstre
-            text(Svar1[s1],200,768);
+            text(Svar1[s1],160,768);
             textSize(30);
             
         
             rect(380, 740, 200, 30);//højre
-            text(Svar2[s2],430,768);
+            text(Svar2[s2],390,768);
             textSize(30);
         }
     
